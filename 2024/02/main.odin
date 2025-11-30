@@ -9,8 +9,8 @@ main :: proc() {
 	fmt.println("\x1b[2J\x1b[H")
 	data := os.read_entire_file_from_filename("input") or_else os.exit(1)
 	it := string(data)
-	sum1: int
-	sum2: int
+	part1: int
+	part2: int
 	for line in strings.split_lines_iterator(&it) {
 		split := strings.split(line, " ") or_else os.exit(1)
 		defer delete(split)
@@ -20,16 +20,16 @@ main :: proc() {
 			append(&levels, strconv.parse_int(split[i]) or_else os.exit(1))
 		}
 		if is_report_safe(levels[:]) {
-			sum1 += 1
-			sum2 += 1
+			part1 += 1
+			part2 += 1
 		} else {
 			if is_report_safe_with_problem_dampener(levels[:]) {
-				sum2 += 1
+				part2 += 1
 			}
 		}
 	}
-	fmt.println("sum1: ", sum1)
-	fmt.println("sum2: ", sum2)
+	fmt.println("part1: ", part1)
+	fmt.println("part2: ", part2)
 }
 
 is_report_safe_with_problem_dampener :: proc(levels: []int) -> bool {
