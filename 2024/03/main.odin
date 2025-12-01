@@ -60,7 +60,7 @@ main :: proc() {
 		}
 	}
 	fmt.println("\x1b[2J\x1b[H")
-	fmt.println("part1: ", part1)
-	fmt.println("part2: ", part2)
+	fmt.println("part1:", part1)
+	fmt.println("part2:", part2)
 }
 

@@ -28,8 +28,8 @@ main :: proc() {
 			}
 		}
 	}
-	fmt.println("part1: ", part1)
-	fmt.println("part2: ", part2)
+	fmt.println("part1:", part1)
+	fmt.println("part2:", part2)
 }
 
 is_report_safe_with_problem_dampener :: proc(levels: []int) -> bool {

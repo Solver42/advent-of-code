@@ -25,7 +25,9 @@ main :: proc() {
 		grid[i] = transmute([]u8)line
 	}
 	part1 := count_xmas(grid)
+	part2 := count_x_mas(grid)
 	fmt.println("part1:", part1) // 2427
+	fmt.println("part2:", part2) // 1900
 }
 
 count_xmas :: proc(grid: [][]u8) -> int {
@@ -85,6 +87,26 @@ count_xmas :: proc(grid: [][]u8) -> int {
 			   grid[row + 1][col - 1] == 'M' &&
 			   grid[row + 2][col - 2] == 'A' &&
 			   grid[row + 3][col - 3] == 'S' {
+				count += 1
+			}
+		}
+	}
+	return count
+}
+
+count_x_mas :: proc(grid: [][]u8) -> int {
+	rows := len(grid)
+	cols := len(grid[0])
+	count := 0
+	for row in 1 ..< rows - 1 {
+		for col in 1 ..< cols - 1 {
+			if grid[row][col] != 'A' {
+				continue
+			}
+			if ((grid[row - 1][col - 1] == 'M' && grid[row + 1][col + 1] == 'S') ||
+				   (grid[row - 1][col - 1] == 'S' && grid[row + 1][col + 1] == 'M')) &&
+			   ((grid[row - 1][col + 1] == 'M' && grid[row + 1][col - 1] == 'S') ||
+					   (grid[row - 1][col + 1] == 'S' && grid[row + 1][col - 1] == 'M')) {
 				count += 1
 			}
 		}

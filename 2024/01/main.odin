@@ -25,8 +25,7 @@ main :: proc() {
 	for i in 0 ..= len(left) - 1 {
 		sum1 += abs(left[i] - right[i])
 	}
-	fmt.println("part1: ", sum1)
-	//	1530215
+	fmt.println("part1:", sum1) //	1530215
 	sum2: int
 	for i in left {
 		nrOfiInj: int
@@ -37,7 +36,6 @@ main :: proc() {
 		}
 		sum2 += i * nrOfiInj
 	}
-	fmt.println("part2: ", sum2)
-	//	26800609
+	fmt.println("part2:", sum2) //	26800609
 }
 
