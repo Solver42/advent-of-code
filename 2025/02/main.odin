@@ -18,15 +18,27 @@ main :: proc() {
 		from := strconv.parse_int(head) or_else os.exit(1)
 		to := strconv.parse_int(tail) or_else os.exit(1)
 		for i in from ..= to {
-			s := fmt.tprint(i)
-			left := s[:len(s) / 2]
-			right := s[len(s) / 2:]
-			if s[:len(s) / 2] == s[len(s) / 2:] {
+			id := fmt.tprint(i)
+			left := id[:len(id) / 2]
+			right := id[len(id) / 2:]
+			if id[:len(id) / 2] == id[len(id) / 2:] {
 				part1 += i
+				part2 += i
+			} else if len(id) > 2 {
+				fragment: for sliceSize in 1 ..= len(id) / 2 {
+					if len(id) % sliceSize != 0 do continue
+					firstPart := id[:sliceSize]
+					for slice in 2 ..= len(id) / sliceSize {
+						thisPart := id[slice * sliceSize - sliceSize:slice * sliceSize]
+						if firstPart != thisPart do continue fragment
+					}
+					part2 += strconv.parse_int(id) or_else os.exit(1)
+				}
 			}
 		}
 	}
 	fmt.println("\x1b[2J\x1b[H")
 	fmt.println("part1:", part1) // 23534117921
+	fmt.println("part2:", part2) // 31755323497
 }
 
