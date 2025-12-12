@@ -9,7 +9,7 @@ main :: proc() {
 	input := string(data)
 	lines := make([dynamic]string)
 	defer delete(lines)
-	line_start := 0
+	line_start: int
 	for i in 0 ..< len(input) {
 		if input[i] == '\n' {
 			append(&lines, input[line_start:i])
@@ -33,7 +33,7 @@ main :: proc() {
 count_xmas :: proc(grid: [][]u8) -> int {
 	rows := len(grid)
 	cols := len(grid[0])
-	count := 0
+	count: int
 	for row in 0 ..< rows {
 		for col in 0 ..< cols {
 			if grid[row][col] != 'X' do continue
