@@ -10,7 +10,7 @@ main :: proc() {
 	fmt.println("processing...")
 	part1: int
 	part2: int
-	input := os.read_entire_file_from_filename("input") or_else os.exit(1)
+	input := os.read_entire_file_from_path("input", context.allocator) or_else os.exit(1)
 	ranges := strings.split(transmute(string)input, ",")
 	for range in ranges {
 		head, _, tail := strings.partition(range, "-")

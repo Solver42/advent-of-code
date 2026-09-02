@@ -7,7 +7,7 @@ SIZE :: 135
 
 main :: proc() {
 	fmt.println("\x1b[2J\x1b[H")
-	data := os.read_entire_file_from_filename("input") or_else os.exit(1)
+	data := os.read_entire_file_from_path("input", context.allocator) or_else os.exit(1)
 	input := string(data)
 	lines := make([dynamic]string)
 	defer delete(lines)
